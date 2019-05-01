@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "jointjs": "^2.2.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.0"
@@ -31,8 +32,8 @@
     ]
   },
   "devDependencies": {
-    "@storybook/react": "^5.0.11",
     "@storybook/addon-actions": "^5.0.11",
-    "@storybook/addon-links": "^5.0.11"
+    "@storybook/addon-links": "^5.0.11",
+    "@storybook/react": "^5.0.11"
   }
 }
