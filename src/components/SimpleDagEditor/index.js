@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import joint from "jointjs/index";
 import { DagNode } from "./definitions";
 
@@ -48,7 +49,7 @@ class SimpleDagEditor extends React.Component {
       markAvailable: true,
       multiLinks: false,
       snapLinks: true,
-      validateConnection: function(cellViewS, magnetS, cellViewT, magnetT, end, linkView) {
+      validateConnection: function (cellViewS, magnetS, cellViewT, magnetT, end, linkView) {
         // Prevent linking from output ports to input ports within one element.
         if (cellViewS === cellViewT) return false;
         // Prevent linking to output ports.
@@ -56,7 +57,7 @@ class SimpleDagEditor extends React.Component {
         // Only other elements should be nodes
         else if (cellViewT.model.isElement()) return true;
       },
-      defaultLink: function(elementView, magnet) {
+      defaultLink: function (elementView, magnet) {
         return new joint.shapes.standard.Link({
           connector: { name: "rounded" },
           attrs: {
@@ -99,7 +100,7 @@ class SimpleDagEditor extends React.Component {
 
     /// Events //////////////////////////////////////////////////////////////////////////////
 
-    paper.model.on("change:position", function(cell) {
+    paper.model.on("change:position", function (cell) {
       var allCells = paper.model.getCells();
 
       // has an obstacle been moved? Then reroute the link.
@@ -112,21 +113,21 @@ class SimpleDagEditor extends React.Component {
       }
     });
 
-    paper.on("blank:pointerdblclick", function(cellView) {
+    paper.on("blank:pointerdblclick", function (cellView) {
       self.clearLinkSelection(paper);
     });
 
-    paper.on("cell:pointerdblclick", function(cellView) {
+    paper.on("cell:pointerdblclick", function (cellView) {
       console.log(cellView.model.id);
     });
 
-    paper.on("link:mouseenter", function(linkView) {
+    paper.on("link:mouseenter", function (linkView) {
       linkView.showTools();
     });
 
-    paper.on("link:mouseleave", function(linkView) {});
+    paper.on("link:mouseleave", function (linkView) { });
 
-    paper.on("link:pointerdown", function(linkView) {
+    paper.on("link:pointerdown", function (linkView) {
       self.clearLinkSelection(paper);
       self.selectLink(linkView, paper);
       linkView.startArrowheadMove("target");
@@ -175,39 +176,27 @@ class SimpleDagEditor extends React.Component {
       })
     );
   };
-  componentWillMount() {}
+  componentWillMount() { }
 
   componentDidMount() {
-    let nodes = [
-      //
-      { id: "1", title: "node 1" },
-      { id: "2", title: "long nody node node node really really long node let's see what happens" },
-      { id: "3", title: "node 3" },
-      { id: "4", title: "node 4" },
-      { id: "5", title: "node 5" }
-    ];
-    let edges = [
-      { from: "1", to: "3", weight: "33%" },
-      { from: "2", to: "4", weight: "100%" },
-      { from: "1", to: "4", weight: "33%" },
-      { from: "1", to: "5", weight: "33%" },
-      { from: "4", to: "5", weight: "100%" }
-    ];
 
-    let dag = this.buildDag(nodes, edges);
+    let dag = this.buildDag(this.props.nodes, this.props.edges);
 
     this.layout(dag);
   }
 
   render() {
     return (
-      <>
-        <div className="App">
-          <div id="paper" className="paper" ref={this.paperContainer} />
-        </div>
-      </>
+      <div id="paper" className="paper" ref={this.paperContainer} />
+
     );
   }
 }
 
+SimpleDagEditor.propTypes = {
+  nodes:  PropTypes.array,
+  edges:  PropTypes.array
+};
+
 export default SimpleDagEditor
+
