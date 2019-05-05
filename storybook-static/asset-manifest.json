@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.js": "/neurobutter/neurobutter-ui/main.309140337b65c76a8801.bundle.js",
+    "main.js.map": "/neurobutter/neurobutter-ui/main.309140337b65c76a8801.bundle.js.map",
+    "runtime~main.js": "/neurobutter/neurobutter-ui/runtime~main.309140337b65c76a8801.bundle.js",
+    "runtime~main.js.map": "/neurobutter/neurobutter-ui/runtime~main.309140337b65c76a8801.bundle.js.map",
+    "vendors~main.js": "/neurobutter/neurobutter-ui/vendors~main.309140337b65c76a8801.bundle.js",
+    "vendors~main.js.map": "/neurobutter/neurobutter-ui/vendors~main.309140337b65c76a8801.bundle.js.map",
+    "iframe.html": "/neurobutter/neurobutter-ui/iframe.html",
+    "precache-manifest.113362790e17c9c89aaea9b2c193d6dd.js": "/neurobutter/neurobutter-ui/precache-manifest.113362790e17c9c89aaea9b2c193d6dd.js",
+    "service-worker.js": "/neurobutter/neurobutter-ui/service-worker.js"
+  }
+}
